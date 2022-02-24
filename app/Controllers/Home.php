@@ -30,19 +30,22 @@ class Home extends BaseController
 
     public function detail($kategori, $slug)
     {
-        $data = $this->barang->getSlugandKategori($kategori, $slug)->getRow();
+        $data = [
+            'detail' => $this->barang->getSlugandKategori($kategori, $slug)->getRow(),
+            'cart' => \Config\Services::cart()
+        ];
         // dd($data);
-        return view('detail', [
-            'detail' => $data
-        ]);
+        return view('detail', $data);
     }
 
     public function findBarang()
     {
         $cari = $this->request->getGet('search');
-        $data = $this->barang->where('nama_barang', $cari)->findAll();
-
-        dd($data);
+        $data = [
+            'data' => $this->barang->searchByKategori($cari)->getResult(),
+            'cart' => \Config\Services::cart()
+        ];
+        return view('Search',  $data);
     }
 
 

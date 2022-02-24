@@ -69,9 +69,19 @@ class BarangModel extends Model
 
     public function cekStok()
     {
-        // check stock all barang from table barang
         $query = $this->db->table('barang')
             ->select(['stok', 'nama_barang'])
+            ->get();
+        return $query;
+    }
+
+    // search by kategori 
+    public function searchByKategori($kategori)
+    {
+        $query = $this->db->table('barang')
+            ->join('kategori', 'barang.kategori_id = kategori.id')
+            ->where('kategori.nama_kategori', $kategori)
+            ->select(['barang.nama_barang', 'barang.id', 'barang.harga', 'barang.stok', 'barang.deskripsi', 'barang.slug as bslug', 'kategori.slug as kslug', 'barang.gambar', 'kategori.nama_kategori'])
             ->get();
 
         return $query;
