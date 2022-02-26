@@ -30,7 +30,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<?php foreach ($barang as  $value) { ?>
+			<?php foreach ($barang as  $value) {
+			?>
 				<div class="col-lg-3 col-md-6 col-12">
 					<?= form_open('home/add');
 					echo form_hidden('id', $value->id);
@@ -52,7 +53,13 @@
 							<div class="price">
 								<span><?= number_format($value->harga, 2, ',', '.')  ?></span>
 							</div>
-							<button type="submit" class="btn btn-secondary btn-sm mt-4">Add To Cart</button>
+							<?php if ($value->stok > 0) { ?>
+								<button type="submit" class="btn btn-secondary btn-sm mt-4">Add To Cart</button>
+							<?php	} else {
+								echo '<div class="alert alert-danger mt-2">Stok Habis</div>';
+							} ?>
+
+
 						</div>
 					</div>
 					<!-- End Single Product -->

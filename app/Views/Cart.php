@@ -77,12 +77,18 @@
                                         <ul class="mb-3 card p-2">
                                             <li>Cart Subtotal<span style="margin-left: 20px;"><?= number_to_currency($cart->total(), 'IDR') ?></span></li>
                                         </ul>
-                                        <div class="button">
+                                        <?php if (session()->get('logged_in') == true && session()->get('pengguna') == true) { ?>
+                                            <div class="button">
+                                                <a href="<?= base_url('home/checkout') ?>" class="btn w-100">Checkout</a>
+                                            </div>
+                                            <button type="submit" class="btn btn-success w-100 mt-2">Update</button>
+                                            <a href="<?= base_url('home/clear') ?>" onclick="return confirm('apakah anda yakin ?')" class="btn btn-secondary mt-2 w-100">Hapus semua product</a>
+                                        <?php  } else { ?>
+                                            <div class="button">
+                                                <a href="<?= base_url('/login') ?>" class="btn w-100">Login </a>
+                                            </div>
+                                        <?php } ?>
 
-                                            <a href="<?= base_url('home/checkout') ?>" class="btn w-100">Checkout</a>
-                                        </div>
-                                        <button type="submit" class="btn btn-success w-100 mt-2">Update</button>
-                                        <a href="<?= base_url('home/clear') ?>" onclick="return confirm('apakah anda yakin ?')" class="btn btn-secondary mt-2 w-100">Hapus semua product</a>
                                     </div>
                                 </div>
                             </div>

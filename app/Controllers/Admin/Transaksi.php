@@ -50,7 +50,8 @@ class Transaksi extends BaseController
         $data = $this->transaksi;
 
         $data->update($id, [
-            'status' => $this->request->getPost('status')
+            'status' => $this->request->getPost('status'),
+            'tanggal_keluar' => $this->request->getPost('tanggal')
         ]);
 
         session()->setFlashdata('success', 'Berhasil mengubah status transaksi');

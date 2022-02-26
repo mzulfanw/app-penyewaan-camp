@@ -86,4 +86,15 @@ class BarangModel extends Model
 
         return $query;
     }
+
+    // get stock by id
+    public function getStockById($id)
+    {
+        $query = $this->db->table('barang')
+            ->where('id', $id)
+            ->select(['stok'])
+            ->get();
+
+        return $query->getRow();
+    }
 }

@@ -154,17 +154,15 @@ class Home extends BaseController
             session()->setFlashdata('error', $this->validator->listErrors());
             return redirect()->back()->withInput();
         }
-        $data[] = [
-            $this->request->getPost('barang_id')
-        ];
-
         $transaksi = new TransaksiModel();
         $dataktp = $this->request->getFile('potoktp');
         $datatf = $this->request->getFile('pototf');
         $namaktp = $dataktp->getRandomName();
         $namatf = $datatf->getRandomName();
+        $jumlah = $this->request->getPost('jumlah');
+        $barang_id = $this->request->getPost('barang_id');
         $transaksi->insert([
-            "barang_id" => $this->request->getPost('barang_id'),
+            "barang_id" => $barang_id,
             "user_id" => $this->request->getPost('user_id'),
             "jumlah" => $this->request->getPost('jumlah'),
             "total_harga" => $this->request->getPost('total_harga'),
@@ -174,13 +172,29 @@ class Home extends BaseController
             "potoktp" => $namaktp,
             "pototf" => $namatf,
         ]);
-        // insert potoktp and pototf image to admin/assets/img/transaksi
-
-
         $dataktp->move('./admin/assets/img/transaksi/ktp/', $namaktp);
         $datatf->move('./admin/assets/img/transaksi/tf/', $namatf);
         $cart = \Config\Services::cart();
         $cart->destroy();
+
+
+        // mengurangi stok barang yang ada di table barang dengan cara melooping dan kurangi stok barang tersebut
+        $barang = new BarangModel();
+        // call all data $barang
+        $data = $barang->findAll();
+        foreach ($data as $value) {
+            // take all stok from $value
+            $stok = $value['stok'];
+            // take all id from $value
+            $id = $value['id'];
+            // if id from $value is equal to id from $barang_id
+            if ($id == $barang_id) {
+                // then stok from $value minus stok from $barang_id
+                $stok = $stok - $jumlah;
+                // update stok from $value
+                $barang->update(['id' => $id], ['stok' => $stok]);
+            }
+        }
 
         session()->setFlashdata('pesan', 'Sukses, Silahkan menunggu Admin untuk mengkonfirmasi pembayaran');
         return redirect()->to(base_url('/'));

@@ -32,4 +32,17 @@ class TransaksiModel extends Model
 
         return $query;
     }
+
+    // take all transaksi by user_id
+    public function getTransaksiByUserId($id)
+    {
+        $query = $this->db->table('transaksi')
+            ->join('barang', 'transaksi.barang_id = barang.id')
+            ->join('users', 'transaksi.user_id = users.id')
+            ->select(['barang.nama_barang', '.users.name', 'transaksi.jumlah', 'transaksi.total_harga', 'transaksi.tanggal', 'transaksi.status', 'transaksi.payment_method', 'transaksi.potoktp', 'transaksi.pototf', 'transaksi.tanggal_keluar', 'transaksi.id'])
+            ->where('transaksi.user_id', $id)
+            ->get();
+
+        return $query;
+    }
 }

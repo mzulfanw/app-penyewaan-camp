@@ -45,6 +45,7 @@
                             <ul class="user-login">
                                 <?php if (session()->get('logged_in') == true && session()->get('pengguna') == true) {
                                     echo '<li><a href="' . base_url() . '/logout/user">Logout</a></li>';
+                                    echo '<li><a href="' . base_url('/dashboard/index') . '">Dashboard</a></li>';
                                 } else {
                                     echo '<li><a href="' . base_url('/login') . '">Sign In</a></li>';
                                     echo '<li><a href="' . base_url('/register') . '">Register</a></li>';

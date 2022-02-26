@@ -32,6 +32,10 @@
         <input type="text" value="<?= $transaksi->status ?>" disabled class="form-control">
         <form action="<?= base_url('/admin/transaksi/update/' . $transaksi->id) ?>" method="POST">
             <input type="text" placeholder="Ubah Status Transaksi" class="form-control mt-3" name="status">
+            <div class="mt-3">
+                <span>Tenggat Pengembalian</span>
+                <input type="date" class="form-control" name="tanggal">
+            </div>
             <button class="btn btn-primary w-25 btn-sm mt-3">Ubah Status</button>
         </form>
     </div>

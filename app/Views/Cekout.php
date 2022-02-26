@@ -41,6 +41,7 @@
                         <p>Total Bayar : <?= number_to_currency($cart->total(), 'IDR') ?> </p>
                     </div>
                     <!-- loop data -->
+                    <input type="text" hidden name="stok" value="">
                     <?php $i = 1;
                     foreach ($keranjang as $value) { ?>
                         <input type="hidden" name="barang_id" value="<?= $value['id'] ?>">
@@ -48,6 +49,7 @@
                     <input type="text" hidden name="user_id" value="<?= session()->get('name') && session()->get('pengguna') == true ? session()->get('id') : '' ?>">
                     <input type="text" hidden name="total_harga" value="<?= $cart->total() ?>">
                     <input type="text" hidden name="jumlah" value="<?= $cart->totalItems(); ?>">
+
                     <div class="mb-3">
                         <label for="formFile" class="form-label">Upload Bukti Transfer</label>
                         <input class="form-control" name="pototf" type="file" id="formFile">

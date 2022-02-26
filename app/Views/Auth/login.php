@@ -1,6 +1,6 @@
 <?= $this->extend('Layout/Header')  ?>
 <?= $this->section('content') ?>
-<div class="container m-5 d-block mx-auto">
+<div class="container m-5 d-block mx-auto" style="min-height: 100vh;">
     <div class="card">
         <?php if (!empty(session()->getFlashdata('error'))) : ?>
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -18,7 +18,7 @@
                     <label for="exampleInputPassword1" class="form-label">Password</label>
                     <input type="password" class="form-control" name="password" id="password">
                 </div>
-                <button type="submit" class="btn btn-primary">Register</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>
     </div>
