@@ -75,7 +75,7 @@
                             <img src="assets/images/faces/1.jpg" alt="Face 1">
                         </div>
                         <div class="ms-3 name">
-                            <h5 class="font-bold"><?= session()->get('name') && session()->get('status') == "admin" ? session()->get('name') : ''  ?></h5>
+                            <h5 class="font-bold"><?= session()->get('name') && session()->get('status') == "admin" ? session()->get('username') : ''  ?></h5>
                             <a href="<?= base_url('/auth/logout') ?>" class="btn btn-danger btn-sm">Logout</a>
                         </div>
                     </div>

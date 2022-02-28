@@ -8,11 +8,17 @@ class UserSeeder extends \CodeIgniter\Database\Seeder
     {
         $data = [
             [
-                'username'  => 'admin',
+                'username'  => 'rifa',
                 'password'  => password_hash('admin', PASSWORD_BCRYPT),
                 'name'      => 'Admin',
                 'roles'     => 'admin'
             ],
+            [
+                'username' => 'hana',
+                'password' => password_hash('admin', PASSWORD_BCRYPT),
+                'name' => 'Admin',
+                'roles' => 'admin'
+            ]
         ];
         $this->db->table('admin')->insertBatch($data);
     }

@@ -64,7 +64,7 @@
                     <div class="col-lg-3 col-md-3 col-7">
                         <!-- Start Header Logo -->
                         <a class="navbar-brand" href="<?= base_url('/')  ?>">
-                            <p>Dadang Camp</p>
+                            <h3 class="text-white">SMK TI Camp</h3>
                         </a>
                         <!-- End Header Logo -->
                     </div>
