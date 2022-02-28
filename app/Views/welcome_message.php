@@ -52,6 +52,7 @@
 							</h4>
 							<div class="price">
 								<span><?= number_format($value->harga, 2, ',', '.')  ?></span>
+								<p>Stok : <?= $value->stok ?></p>
 							</div>
 							<?php if ($value->stok > 0) { ?>
 								<button type="submit" class="btn btn-secondary btn-sm mt-4">Add To Cart</button>

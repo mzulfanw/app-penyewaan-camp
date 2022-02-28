@@ -24,8 +24,13 @@
                         </h4>
                         <div class="price">
                             <span><?= number_format($result->harga, 2, ',', '.')  ?></span>
+                            <p>Stok : <?= $result->stok ?></p>
                         </div>
-                        <button type="submit" class="btn btn-secondary btn-sm mt-4">Add To Cart</button>
+                        <?php if ($result->stok > 0) { ?>
+                            <button type="submit" class="btn btn-secondary btn-sm mt-4">Add To Cart</button>
+                        <?php    } else {
+                            echo '<div class="alert alert-danger mt-2">Stok Habis</div>';
+                        } ?>
                     </div>
                 </div>
             </div>

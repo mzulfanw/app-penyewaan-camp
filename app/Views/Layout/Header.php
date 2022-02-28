@@ -105,7 +105,7 @@
                                 ?>
                                 <div class="cart-items">
                                     <a href="javascript:void(0)" class="main-btn">
-                                        <i class="lni lni-cart"></i>
+                                        <i class="lni lni-cart text-white"></i>
                                         <span class="total-items"><?= $jumlahItem ?></span>
                                     </a>
                                     <!-- Shopping Item -->

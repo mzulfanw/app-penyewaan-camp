@@ -45,6 +45,10 @@
                                 <?= $value->tanggal_keluar ?>
                             </span>
                         </div>
+                    <?php } else if ($value->status == "Gagal") { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <p>Mohon Maaf kami menemukan sesuatu yang mencurigakan, pada barang yang anda beli <?= $value->nama_barang ?>. Silahkan hubungi admin@camera.com</p>
+                        </div>
                     <?php } ?>
                 <?php } ?>
             </div>

@@ -50,7 +50,13 @@
                                     <td><?= $value->jumlah ?></td>
                                     <td><?= strtoupper($value->payment_method) ?></td>
                                     <td><?= $value->tanggal ?></td>
-                                    <td><?= $value->status ?></td>
+                                    <?php if ($value->status == "Berhasil") { ?>
+                                        <td><span class="badge bg-success"><?= $value->status ?></span></td>
+                                    <?php } else if ($value->status == "Sudah di Bayar") { ?>
+                                        <td><span class="badge bg-warning text-dark"><?= $value->status  ?></span></td>
+                                    <?php } else { ?>
+                                        <td><span class="badge bg-danger"><?= $value->status ?></span></td>
+                                    <?php } ?>
                                     <td>
                                         <a href="<?= base_url('/admin/transaksi/view/' . $value->id) ?>">
                                             <dt class="the-icon "><svg class="svg-inline--fa fa-info fa-w-6 fa-fw select-all " aria-hidden="true" focusable="false" data-prefix="fas" data-icon="info" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" data-fa-i2svg="">
